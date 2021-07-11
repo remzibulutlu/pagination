@@ -1,4 +1,12 @@
-table {  
+
+h1{
+    font-weight: bold;
+    
+
+}
+
+table { 
+    margin-top: 50px; 
     border-collapse: collapse;  
 }  
 .inline{   
@@ -30,8 +38,18 @@ input, button{
        
 }   
 .pagination a.active {   
-        background-color: rgb(228, 213, 10);   
-}   
+        background-color: rgb(228, 213, 10);
+}
+
 .pagination a:hover {   
     background-color: rgb(235, 15, 15);   
+} 
+
+.pagination a.active2 {
+        background-color:rgb(235, 64, 64);
+        font-weight: bold;
 }   
+   
+.pagination a.active2:hover {   
+    background-color: rgb(91, 204, 16);   
+} 

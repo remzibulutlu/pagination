@@ -16,7 +16,7 @@
         require_once "connection.php";   
         
        
-        if (isset($_GET["page"])) {    
+        if (isset($_GET["page"]) && is_numeric($_GET['page']) ) {    
             $page  = $_GET["page"];
             if ($page <= 0) {
                 $page = 1;
@@ -27,22 +27,21 @@
         }    
     
 
+        
 
-        $per_page_record = 4;
-
+        $per_page_record = 3;
         $start_from = ($page-1) * $per_page_record; 
-
         $query = "SELECT * FROM pagi LIMIT $start_from, $per_page_record";
-
         $rs_result = mysqli_query ($conn, $query);
     ?>    
   
 
 
+
     <div class="container text-center">   
       <br>   
-      <div>   
-        <h1>Pagination</h1>   
+      <div class="tablerows">   
+        <h1 text-center>Pagination Application</h1>   
           
         <table class="table table-striped table-dark">   
           <thead>   
@@ -53,16 +52,14 @@
               <th>Jobs</th>
               <th>Ages</th>   
             </tr>   
-          </thead>   
-    
-    
+          </thead>
+
             <tbody>
 
             <?php 
+            while ($row = mysqli_fetch_array($rs_result)) {           
+            ?> 
 
-            while ($row = mysqli_fetch_array($rs_result)) {    
-                      
-            ?>     
             <tr>     
              <td><?php echo $row["id"]; ?></td>     
             <td><?php echo $row["user_names"]; ?></td>   
@@ -79,6 +76,9 @@
         
         </table>   
   
+
+
+
 
      <div class="pagination text-center"> 
 
@@ -101,25 +101,29 @@
     if($total_records > $per_page_record){	 
 	    echo '<br><br>';
 
-
-        $x = 4; 
+        $x = 3; 
         
         if($page >= 2){		
             $prev = $page-1;			
-            echo '<a href="?page='.$prev.'">« previous </a>'; 
-            if($page > $total_pages){
-
-                $page = $total_pages;
-
-
-            }
+            echo '<a href="?page='.$prev.'">« previous </a>';   
         }
+
+            
+        if($page > $total_pages){
+
+            header('location: index.php?page='.$total_pages);
+        }
+
+        
         if($page==1){ 
             echo "<a class = 'active'>1</a>";
         }
+
+
         else{ 
             echo '<a href="?page=1">1</a>'; 	
         }
+
 
 
 
@@ -131,6 +135,9 @@
         else {
             $i = 2; 		  
         }
+
+
+
 
         for($i; $i<=$page+$x; $i++) {	
             if($i==$page){
@@ -144,18 +151,23 @@
                 break;
             }  
         }
+
+
         if($page+$x < $total_pages-1) {	
             echo '.......';			
             echo '<a href="?page='.$total_pages.'">'.$total_pages.'</a>';
         }
+
+
         elseif($page+$x == $total_pages-1) { 			
             echo '<a href="?page='.$total_pages.'">'.$total_pages.'</a>'; 		 
         }
+
+
         if($page < $total_pages){	  
             $next = $page+1;		  
             echo '<a href="?page='.$next.'"> Next » </a>'; 		  
         }
-    
     }
 
         ?>
