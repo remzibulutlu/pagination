@@ -1,0 +1,37 @@
+table {  
+    border-collapse: collapse;  
+}  
+.inline{   
+        display: inline-block;   
+        margin: 20px 0px;   
+}   
+     
+input, button{   
+        height: 34px;   
+}   
+
+.pagination {   
+    display: inline-flexbox;
+    text-align: center;
+    align-content: center;
+    align-self: center;   
+}   
+.pagination a {   
+    font-weight:lighter;   
+    font-size: 15px;   
+    color: black;   
+    padding: 8px 16px;   
+    text-decoration: none;   
+    border:2px solid black;
+    display: inline-flexbox;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+       
+}   
+.pagination a.active {   
+        background-color: rgb(228, 213, 10);   
+}   
+.pagination a:hover {   
+    background-color: rgb(235, 15, 15);   
+}   
