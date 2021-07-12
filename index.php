@@ -2,8 +2,7 @@
   <head>   
     <title>Pagination</title>   
 
-    <link rel="stylesheet"  
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
 
   </head>   
@@ -67,7 +66,6 @@
             <td><?php echo $row["user_job"]; ?></td>
             <td><?php echo $row["user_age"]; ?></td>                                           
             </tr>
-
             <?php     
             };    
             ?>     
@@ -76,8 +74,6 @@
         
         </table>   
   
-
-
 
 
      <div class="pagination text-center"> 
@@ -101,7 +97,7 @@
     if($total_records > $per_page_record){	 
 	    echo '<br><br>';
 
-        $x = 3; 
+        $x = 3; //pagination
         
         if($page >= 2){		
             $prev = $page-1;			
@@ -142,7 +138,7 @@
         for($i; $i<=$page+$x; $i++) {	
             if($i==$page){
                 echo "<a class ='active'>$i</a>";
-                //echo "<a class ='active' href="?page='.$i.'">'.$i.'</a>'";
+                
             }
             else{
                 echo '<a href="?page='.$i.'">'.$i.'</a>';
